@@ -14,6 +14,7 @@ export class TokenStorageService {
   }
 
   setToken(token: string): void {
+    console.log(token);
     sessionStorage.removeItem(this.TOKEN_KEY);
     sessionStorage.setItem(this.TOKEN_KEY, token);
   }

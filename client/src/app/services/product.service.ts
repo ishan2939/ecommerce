@@ -13,8 +13,8 @@ export class ProductService {
 
   constructor(private http: HttpClient, private _api: ApiService) {}
 
-  getAllProducts(limitOfResults = 9, page): Observable<Products> {
-    return this.http.get<Products>(this.url + 'products', {
+  getAllProducts(limitOfResults = 9, page): Observable<Products[]> {
+    return this.http.get<Products[]>(this.url + 'products', {
       params: {
         limit: limitOfResults.toString(),
         page: page,
@@ -22,8 +22,10 @@ export class ProductService {
     });
   }
 
-  getSingleProduct(id: Number): Observable<any> {
-    console.log(id);
+  getSingleProduct(id: String): Observable<any> {
+    // console.log(id);
+
+    console.log(this._api.getTypeRequest('products/' + id));
     return this._api.getTypeRequest('products/' + id);
   }
 }

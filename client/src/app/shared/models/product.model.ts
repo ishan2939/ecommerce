@@ -4,12 +4,12 @@ export interface Products {
 }
 
 export interface Product {
-  id: Number;
-  name: String;
-  category: String;
+  title: String;
+  // category: String;
+  image: String,
   description: String;
-  image: String;
   price: Number;
   quantity: Number;
-  images: String;
+  short_desc: String,
+  cart_id: String
 }

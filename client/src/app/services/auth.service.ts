@@ -26,16 +26,16 @@ export class AuthService {
     return this._api
       .postTypeRequest('auth/login', {
         email: credentials.email,
-        password: credentials.password,
+        password: credentials.password
       })
       .pipe(
         map((res: any) => {
           let user = {
             email: credentials.email,
-            token: res.token,
+            token: res.token
           };
           this._token.setToken(res.token);
-          this._token.setUser(res.data[0]);
+          this._token.setUser(res.data);
           console.log(res);
           this.userSubject.next(user);
           return user;
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   register(user: any): Observable<any> {
-    return this._api.postTypeRequest('auth/register', {
+    return this._api.postTypeRequest('auth/signup', {
       fullName: user.fullName,
       email: user.email,
       password: user.password,

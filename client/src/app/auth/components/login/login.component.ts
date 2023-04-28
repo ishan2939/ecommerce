@@ -18,13 +18,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
+
     this.loading = true;
     this.error = '';
     if (!this.email || !this.password) {
       this.error = 'Make sure to fill everything ;)';
     } else {
       this._auth
-        .login({ email: this.email, password: this.password })
+        .login({ email: this.email, password: this.password})
         .subscribe(
           (res) => {
             this.loading = false;

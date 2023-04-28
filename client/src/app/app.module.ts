@@ -29,6 +29,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { SwiperModule } from 'swiper/angular';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
@@ -69,6 +70,7 @@ registerLocaleData(en);
     NzInputNumberModule,
     SwiperModule,
     NzSpinModule,
+    NzSelectModule,
     NzNotificationModule,
     NzProgressModule,
     NzTableModule,

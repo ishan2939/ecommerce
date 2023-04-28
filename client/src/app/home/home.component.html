@@ -37,9 +37,10 @@
     <div class="products__list" *ngIf="!loading">
       <app-product-card
         *ngFor="let n of products"
-        [id]="n.id"
+        [id]="n._id"
         [title]="n.title"
         [image]="n.image"
+        [description]="n.description"
         [price]="n.price"
         [short_desc]="n.short_desc"
         [category]="n.category"

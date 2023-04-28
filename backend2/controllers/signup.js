@@ -7,7 +7,7 @@ exports.register = async (req, res) => {
     try{
         const {fullName, email, password, role} = req.body;
 
-        if(!(fullName && email && password && role)){
+        if(!(fullName && email && password)){
             return res.status(400).send("Not sufficient data provided.");
         }
         
@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
         encryptedPassword = await bcrypt.hash(password,10);
 
         const user = await User.create({
-            name: fullName,
+            username: fullName,
             email:  email.toLowerCase(),
             password: encryptedPassword,
             role: role
@@ -29,7 +29,7 @@ exports.register = async (req, res) => {
 
         const token = jwt.sign(
             {data: user},
-            'JSJSJS',
+            'auth-token',
             {
                 expiresIn: "2h"
             }

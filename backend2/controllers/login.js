@@ -11,14 +11,12 @@ exports.login = async (req, res) => {
         }
 
         const userExists = await User.findOne({ email: email.toLowerCase() });
-
         if (userExists) {
             const isPasswordCorrect = await bcrypt.compare(password, userExists.password);
             if(isPasswordCorrect){
-
                 const token = jwt.sign(
-                    { data: userExistss },
-                    "JSJSJS",
+                    { data: userExists },
+                    "auth-token",
                     { expiresIn: "2h" }
                 )
     

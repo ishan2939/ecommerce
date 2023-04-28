@@ -59,8 +59,8 @@ export class ProductComponent implements OnInit {
       .subscribe((productId) => {
         // returns string so convert it to number
         this.id = parseInt(productId);
+        // console.log(this._product["products"]);
         this._product.getSingleProduct(productId).subscribe((product) => {
-          console.log(product);
           this.product = product;
           if (product.quantity === 0) this.quantity = 0;
           else this.quantity = 1;

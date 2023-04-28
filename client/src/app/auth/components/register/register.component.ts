@@ -14,6 +14,9 @@ export class RegisterComponent implements OnInit {
   password = '';
   confirmPassword = '';
   errorMessage = '';
+  username = '';
+  age = 14;
+  role = null;
   loading = false;
   constructor(
     private _api: ApiService,
@@ -25,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     this.errorMessage = '';
-    if (this.fullName && this.password && this.email && this.confirmPassword) {
+    if (this.fullName && this.password && this.username && this.email && this.confirmPassword) {
       if (this.password !== this.confirmPassword) {
         this.errorMessage = 'Passwords need to match';
       } else {
@@ -33,8 +36,11 @@ export class RegisterComponent implements OnInit {
         this._auth
           .register({
             fullName: this.fullName,
+            username: this.username,
             email: this.email,
             password: this.password,
+            age: this.age,
+            role: this.role
           })
           .subscribe(
             (res) => {
@@ -54,7 +60,8 @@ export class RegisterComponent implements OnInit {
   }
 
   canSubmit(): boolean {
-    return this.fullName && this.email && this.password && this.confirmPassword
+    console.log(this.role)
+    return this.fullName && this.password && this.username && this.email && this.confirmPassword
       ? true
       : false;
   }

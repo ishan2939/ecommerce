@@ -13,7 +13,9 @@ exports.register = async (req, res) => {
         
         const ifUserExists = await User.findOne({ email : email.toLowerCase() });
         if(ifUserExists){
-            return res.status(409).send("User already exists.");
+            return res.status(409).json({
+                message: "Email address is in use, please try a different one"
+            });
         }
 
         encryptedPassword = await bcrypt.hash(password,10);
@@ -26,21 +28,24 @@ exports.register = async (req, res) => {
         });
 
         const token = jwt.sign(
-            {user_id : user._id, email},
+            {data: user},
             'JSJSJS',
             {
                 expiresIn: "2h"
             }
         )
 
-        user.token = token;
 
         res.status(201).json({
-            "status": "Registered successfully",    
-            "user" : user
+            data: user,
+            token: token,
+            message: "Successfully registered"
         });
     }
     catch(err){
-        console.log(err);
+        res.status(400).json({
+            data: err.message,
+            message: "Something went wrong, please try again"
+        });
     }
 }   

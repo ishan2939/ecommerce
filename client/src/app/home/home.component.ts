@@ -19,21 +19,27 @@ export class HomeComponent implements OnInit {
   categories: any[] = [
     {
       name: 'cosmetics and body care',
+      img: 'beauty.png'
     },
     {
       name: 'furniture and decor',
+      img: 'furniture.png'
     },
     {
       name: 'household items',
+      img: 'household.png'
     },
     {
       name: 'food and beverage',
+      img: 'food.png'
     },
     {
       name: 'digital services',
+      img: 'digital2.png'
     },
     {
       name: 'health and wellness',
+      img: 'healthcare.png'
     },
   ];
   loading = false;

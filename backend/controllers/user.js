@@ -11,7 +11,7 @@ exports.get_all_users = async(req, res) =>{
 };
 
 exports.update_user = async (req, res, next) => {
-    const { userId } = req.params;
+    const userId  = req.params.id;
     const { fullName, email, password } = req.body;
 
     try{
@@ -21,10 +21,12 @@ exports.update_user = async (req, res, next) => {
             if(fullName===user.fullName && email===user.email && password===user.password){
                 return res.status(400).json({message: "No new data has been provided"});
             }
+            
                 const updatedUser = await User.findByIdAndUpdate(userId, req.body, { new: true, runValidators: true });
+
                 return res.status(200).json({
                     message: "User details have been successfully updated",
-                    data: updatedUser(400).json()
+                    data: updatedUser
                 });
         }
         else{

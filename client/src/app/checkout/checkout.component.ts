@@ -22,7 +22,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private _auth: AuthService, private _cart: CartService) {
     this._auth.user.subscribe((user) => {
-      console.log(user);
+      // console.log(user);
       if (user) {
         this.currentUser = user;
         this.billingAddress[0].value = user.fullName;
@@ -44,7 +44,7 @@ export class CheckoutComponent implements OnInit {
         .submitCheckout(this.currentUser._id, this.cartData)
         .subscribe(
           (res: any) => {
-            console.log(res);
+            // console.log(res);
             this.loading = false;
             this.orderId = res.orderId;
             this.products = res.products;

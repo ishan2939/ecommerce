@@ -41,17 +41,19 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._api.getTypeRequest(`orders/?userId=${this.user.user_id}`).subscribe(
+    this._api.getTypeRequest(`orders/?userId=${this.user._id}`).subscribe(
       (res: any) => {
-        console.log(res);
-        res.data.forEach((item) => {
-          this._product
-            .getSingleProduct(item.product_id)
-            .subscribe((product) => {
-              console.log(product);
-              this.orders.push({ ...product, ...item });
-            });
+
+        res.data.forEach((item:any) => {
+          for(let i of item.products){
+            console.log('===',i);
+
+            // console.log(i);
+            // console.log(product);
+            this.orders.push({title: i.p_id.title, quantity: i.ordered_quantity, order_id: item._id});
+          }
         });
+        // console.log(this.orders);
         // let uniqueProductsArray = Array.from(
         //   new Set(res.data.map((p) => p.product_id))
         // );

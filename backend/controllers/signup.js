@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
             {data: user},
             'auth-token',
             {
-                expiresIn: "2h"
+                expiresIn: "2d"
             }
         )
 

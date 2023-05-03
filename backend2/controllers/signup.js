@@ -5,9 +5,10 @@ const bcrypt = require('bcryptjs');
 exports.register = async (req, res) => {
 
     try{
-        const {fullName, email, password, role} = req.body;
+        const {fullName, username, email, password, age, role} = req.body;
+        console.log(req.body);
 
-        if(!(fullName && email && password)){
+        if(!(fullName && email && password && role)){
             return res.status(400).send("Not sufficient data provided.");
         }
         
@@ -21,9 +22,11 @@ exports.register = async (req, res) => {
         encryptedPassword = await bcrypt.hash(password,10);
 
         const user = await User.create({
-            username: fullName,
+            fullName: fullName,
+            username: username,
             email:  email.toLowerCase(),
             password: encryptedPassword,
+            age: age,
             role: role
         });
 
@@ -43,6 +46,7 @@ exports.register = async (req, res) => {
         });
     }
     catch(err){
+        console.log(err);
         res.status(400).json({
             data: err.message,
             message: "Something went wrong, please try again"

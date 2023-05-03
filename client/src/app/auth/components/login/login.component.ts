@@ -29,7 +29,10 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (res) => {
             this.loading = false;
-            this._router.navigate(['/']);
+            if(res.data.role == 'customer')
+              this._router.navigate(['/']);
+            else
+              this._router.navigate(['/showmyproducts']);
           },
           (err) => {
             console.log(err);

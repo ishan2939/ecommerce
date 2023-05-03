@@ -31,15 +31,15 @@
           <label for="age">age</label>
           <input nz-input type="number" name="age" [(ngModel)]="age" min="14" max="100" placeholder="Enter your age here" />
         </div>
-        <!-- <div class="input-container">
+        <div class="input-container">
           <label for="role">Role</label>
-          <input nz-input name="role" [(ngModel)]="role" placeholder="Enter your role" />
-          <nz-select [(ngModel)]="role"  class="selector">
-            <nz-option nzValue="Seller" nzLabel="Seller"></nz-option>
-            <nz-option nzValue="Customer" nzLabel="Customer"></nz-option>
-            <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+          <!-- <input nz-input name="role" [(ngModel)]="role" placeholder="Enter your role" /> -->
+          <nz-select [(ngModel)]="role" name="role"  class="selector">
+            <nz-option nzValue="seller" nzLabel="seller"></nz-option>
+            <nz-option nzValue="customer" nzLabel="customer"></nz-option>
+            <!-- <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option> -->
           </nz-select> 
-        </div>-->
+        </div>
       </div>
       <div class="✅">
         <div class="checkbox-container">

@@ -38,7 +38,7 @@ export class AuthService {
           this._token.setUser(res.data);
           console.log(res);
           this.userSubject.next(user);
-          return user;
+          return res;
         })
       );
   }
@@ -46,8 +46,11 @@ export class AuthService {
   register(user: any): Observable<any> {
     return this._api.postTypeRequest('auth/signup', {
       fullName: user.fullName,
+      username: user.username,
       email: user.email,
       password: user.password,
+      age: user.age,
+      role: user.role
     });
   }
 

@@ -1,0 +1,42 @@
+<div class="register-container">
+    <div class="form-container">
+        <h2>Add Product</h2>
+        <nz-alert *ngIf="errorMessage" nzShowIcon nzType="error" [nzMessage]="errorMessage"
+            [ngStyle]="{ 'margin-bottom': '16px' }"></nz-alert>
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="input-container">
+                <label for="title">title</label>
+                <input nz-input type="text" name="title" [(ngModel)]="title" placeholder="Enter your product title" />
+            </div>
+            <div class="input-container">
+                <label for="image">Image URL</label>
+                <input nz-input type="text" name="image" [(ngModel)]="image" placeholder="Enter your image URL here" />
+            </div>
+            <div class="input-container">
+                <label for="description">Description</label>
+                <input nz-input type="text" name="description" [(ngModel)]="description"
+                    placeholder="Enter your description" />
+            </div>
+            <div class="input-container">
+                <label for="price">price</label>
+                <input nz-input type="number" name="price" min="0" [(ngModel)]="price" placeholder="Enter your price here" />
+            </div>
+            <div class="input-container">
+                <label for="quantity">quantity</label>
+                <input nz-input type="number" name="quantity" min="0" [(ngModel)]="quantity"
+                    placeholder="Enter product qunatity" />
+            </div>
+            <div class="input-container">
+                <label for="short_desc">short description</label>
+                <input nz-input type="text" name="short_desc" [(ngModel)]="short_desc" placeholder="Enter your short description here" />
+            </div>
+
+            <div class="cta-container">
+                <!-- <input type="submit" value="Sign up" /> -->
+                <button nz-button type="submit" [disabled]="!canSubmit()" [nzLoading]="loading">
+                    Add product
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

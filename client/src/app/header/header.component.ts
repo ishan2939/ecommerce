@@ -3,6 +3,7 @@ import { HostListener } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 import { TokenStorageService } from '../services/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   dropdownVisible = false;
   cartData: any;
+  userRole: any;
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
@@ -30,8 +32,11 @@ export class HeaderComponent implements OnInit {
   constructor(
     private _token: TokenStorageService,
     private _auth: AuthService,
-    private _cart: CartService
+    private _cart: CartService,
+    private _router: Router
   ) {
+    
+    console.log(this.userRole);
     this.getScreenSize();
     this._auth.user.subscribe((user) => {
       if (user) this.isLoggedIn = true;
@@ -43,6 +48,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this._token.getUser())
+      this.userRole = this._token.getUser().role;
+    else
+      this.userRole = 'customer'
     if (this._token.getUser()) this.isLoggedIn = true;
     else this.isLoggedIn = false;
   }
@@ -61,6 +70,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this._auth.logout();
+    this._router.navigate(['/']);
     this.isMenuOpen = false;
   }
 }

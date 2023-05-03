@@ -9,6 +9,9 @@ import { ProductComponent } from './product/product.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { ShowmyproductsComponent } from './showmyproducts/showmyproducts.component';
+import { AddproductsComponent } from './addproducts/addproducts.component';
+import { MyproductdetailsComponent } from './myproductdetails/myproductdetails.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +34,21 @@ const routes: Routes = [
     component: OrderHistoryComponent,
     canActivate: [AuthGuardService],
   },
+  {
+    path: 'showmyproducts',
+    component: ShowmyproductsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'addproduct',
+    component: AddproductsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'productdetails/:id',
+    component: MyproductdetailsComponent,
+    canActivate: [AuthGuardService],
+  }
 ];
 
 @NgModule({

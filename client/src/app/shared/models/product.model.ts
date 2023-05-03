@@ -11,5 +11,6 @@ export interface Product {
   price: Number;
   quantity: Number;
   short_desc: String,
-  cart_id: String
+  cart_id: String,
+  seller_id: String
 }

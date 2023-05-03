@@ -36,6 +36,9 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { ShowmyproductsComponent } from './showmyproducts/showmyproducts.component';
+import { AddproductsComponent } from './addproducts/addproducts.component';
+import { MyproductdetailsComponent } from './myproductdetails/myproductdetails.component';
 
 registerLocaleData(en);
 
@@ -53,6 +56,9 @@ registerLocaleData(en);
     HeaderComponent,
     FooterComponent,
     ProductCardComponent,
+    ShowmyproductsComponent,
+    AddproductsComponent,
+    MyproductdetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,7 @@ const productSchema = new mongoose.Schema({
 	},*/
 	price: {
 		type: Number,//float nakhvu hoy to su karvanu
-		require: true
+		required: true
 	},
 	// productCategory: {
 	// 	type: String,
@@ -34,14 +34,18 @@ const productSchema = new mongoose.Schema({
 	// },
 	quantity: {
 		type: Number,
-		require: true
+		required: true
 	},
 	short_desc: {
 		type: String,
-		require: true
+		required: true
 	},
 	cart_id: {
 		type:String
+	},
+	seller_id: {
+		type: String,
+		required: true
 	}
 });
 

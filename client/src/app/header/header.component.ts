@@ -70,7 +70,10 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this._auth.logout();
-    this._router.navigate(['/']);
+    this._cart.clearCart();
+    this._router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
     this.isMenuOpen = false;
   }
 }

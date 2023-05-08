@@ -30,10 +30,14 @@ export class LoginComponent implements OnInit {
           (res) => {
             this.loading = false;
             if(res.data.role == 'customer'){
-              this._router.navigateByUrl('/');
+              this._router.navigate(['/']).then(() => {
+                window.location.reload();
+              });
             }
             else{
-              this._router.navigateByUrl('/showmyproducts');
+              this._router.navigate(['/showmyproducts']).then(() => {
+                window.location.reload();
+              });
               
             }
           },

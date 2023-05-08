@@ -29,10 +29,13 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (res) => {
             this.loading = false;
-            if(res.data.role == 'customer')
-              this._router.navigate(['/']);
-            else
-              this._router.navigate(['/showmyproducts']);
+            if(res.data.role == 'customer'){
+              this._router.navigateByUrl('/');
+            }
+            else{
+              this._router.navigateByUrl('/showmyproducts');
+              
+            }
           },
           (err) => {
             console.log(err);

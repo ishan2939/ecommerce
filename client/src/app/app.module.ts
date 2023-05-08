@@ -39,6 +39,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { ShowmyproductsComponent } from './showmyproducts/showmyproducts.component';
 import { AddproductsComponent } from './addproducts/addproducts.component';
 import { MyproductdetailsComponent } from './myproductdetails/myproductdetails.component';
+import { ProductordersComponent } from './productorders/productorders.component';
 
 registerLocaleData(en);
 
@@ -59,6 +60,7 @@ registerLocaleData(en);
     ShowmyproductsComponent,
     AddproductsComponent,
     MyproductdetailsComponent,
+    ProductordersComponent,
   ],
   imports: [
     BrowserModule,

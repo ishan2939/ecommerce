@@ -12,6 +12,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { ShowmyproductsComponent } from './showmyproducts/showmyproducts.component';
 import { AddproductsComponent } from './addproducts/addproducts.component';
 import { MyproductdetailsComponent } from './myproductdetails/myproductdetails.component';
+import { ProductordersComponent } from './productorders/productorders.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path: 'productdetails/:id',
     component: MyproductdetailsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'getmyproductorders',
+    component: ProductordersComponent,
     canActivate: [AuthGuardService],
   }
 ];

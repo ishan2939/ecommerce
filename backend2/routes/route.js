@@ -24,6 +24,7 @@ router.route("/api/v1/addproduct").post(AdminController.addProduct);
 router.route("/api/v1/updateproduct").post(AdminController.updateProduct);
 router.route("/api/v1/deleteproduct").post(AdminController.deleteProduct);
 router.route("/api/v1/showmyproducts").get(AdminController.get_my_products); 
+router.route("/api/v1/getmyorders").post(AdminController.getMyOrders); 
 
 // router.route("/api/v1/orders/").get(orderController.get_orders);
 // router.route("/api/v1/orders/single").get(orderController.get_single_order);

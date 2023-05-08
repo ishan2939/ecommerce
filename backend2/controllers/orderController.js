@@ -20,7 +20,8 @@ exports.create_order = async (req, res, next) => {
   
     const newOrder = await OrderDetail.create({
       user_id: userId,
-      products: products
+      products: products,
+      createdAt: new Date()
     });
 
     console.log(newOrder)

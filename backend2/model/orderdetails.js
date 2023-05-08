@@ -5,7 +5,8 @@ const orderSchema = new mongoose.Schema({
     products: [{
         p_id: {type: mongoose.Schema.Types.ObjectId, ref: "product"},
         ordered_quantity: {type: Number}
-    }]
+    }],
+    createdAt: Date
 });
 
 module.exports = mongoose.model("orderDetail", orderSchema);

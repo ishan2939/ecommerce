@@ -17,6 +17,12 @@ export class ProfileComponent implements OnInit {
       type: 'text',
     },
     {
+      key: 'username',
+      label: 'username',
+      value: '',
+      type: 'text',
+    },
+    {
       key: 'email',
       label: 'Email address',
       value: '',
@@ -33,7 +39,7 @@ export class ProfileComponent implements OnInit {
       label: 'Confirm password',
       value: '',
       type: 'password',
-    },
+    }
   ];
   userId = null;
   alertMessage = '';
@@ -49,15 +55,17 @@ export class ProfileComponent implements OnInit {
 
   // Update user fields with current details
   ngOnInit(): void {
-    const { _id, fullName, email } = this._token.getUser();
+    const { _id, fullName, email, username} = this._token.getUser();
     this.userId = _id;
     this.user[0].value = fullName;
-    this.user[1].value = email;
+    this.user[1].value = username;
+    this.user[2].value = email;
     console.log(this.user);
   }
 
   canUpdate(): boolean {
-    return this.user.filter((field) => field.value.length > 0).length !== 4
+    console.log(this.user.filter((field) => field.value.length > 0))
+    return this.user.filter((field) => field.value.length > 0).length !== 5
       ? true
       : false;
   }
@@ -65,7 +73,7 @@ export class ProfileComponent implements OnInit {
   // Submit data to be updated
   onSubmit(): void {
     this.alertVisible = false;
-    if (this.user[2].value !== this.user[3].value) {
+    if (this.user[3].value !== this.user[4].value) {
       this.alertType = 'error';
       this.alertMessage = 'Passwords do not match';
       this.alertVisible = true;
@@ -75,8 +83,9 @@ export class ProfileComponent implements OnInit {
       this._api
         .putTypeRequest(`users/${this.userId}`, {
           fullName: this.user[0].value,
-          email: this.user[1].value,
-          password: this.user[2].value,
+          username: this.user[1].value,
+          email: this.user[2].value,
+          password: this.user[3].value,
         })
         .subscribe(
           (res: any) => {
@@ -86,13 +95,9 @@ export class ProfileComponent implements OnInit {
             this.alertVisible = true;
             this.loading = false;
             const oldDetails = this._token.getUser();
-            this._token.setUser({
-              ...oldDetails,
-              fname: this.user[0].value,
-              email: this.user[1].value,
-            });
-            this.user[2].value = '';
+            this._token.setUser(res.data);
             this.user[3].value = '';
+            this.user[4].value = '';
             // window.location.reload();
           },
           (err: any) => {

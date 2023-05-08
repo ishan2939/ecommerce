@@ -23,7 +23,7 @@ export class TokenStorageService {
     return JSON.parse(sessionStorage.getItem(this.USER_KEY));
   }
 
-  setUser(user): void {
+  setUser(user:any): void {
     sessionStorage.removeItem(this.USER_KEY);
     sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
   }

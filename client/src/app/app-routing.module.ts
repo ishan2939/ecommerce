@@ -13,6 +13,7 @@ import { ShowmyproductsComponent } from './showmyproducts/showmyproducts.compone
 import { AddproductsComponent } from './addproducts/addproducts.component';
 import { MyproductdetailsComponent } from './myproductdetails/myproductdetails.component';
 import { ProductordersComponent } from './productorders/productorders.component';
+import { ShowchartComponent } from './showchart/showchart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

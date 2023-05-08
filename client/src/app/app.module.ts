@@ -40,6 +40,12 @@ import { ShowmyproductsComponent } from './showmyproducts/showmyproducts.compone
 import { AddproductsComponent } from './addproducts/addproducts.component';
 import { MyproductdetailsComponent } from './myproductdetails/myproductdetails.component';
 import { ProductordersComponent } from './productorders/productorders.component';
+import { ShowchartComponent } from './showchart/showchart.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 registerLocaleData(en);
 
@@ -61,6 +67,8 @@ registerLocaleData(en);
     AddproductsComponent,
     MyproductdetailsComponent,
     ProductordersComponent,
+    ShowchartComponent,
+    CanvasJSChart,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +89,7 @@ registerLocaleData(en);
     NzSelectModule,
     NzNotificationModule,
     NzProgressModule,
-    NzTableModule,
+    NzTableModule
   ],
   providers: [
     authInterceptorProviders,
@@ -89,5 +97,6 @@ registerLocaleData(en);
     { provide: NZ_I18N, useValue: en_US },
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
